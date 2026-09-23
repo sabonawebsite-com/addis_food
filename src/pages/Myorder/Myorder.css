@@ -1,0 +1,262 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+
+.place-order {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  width: 90%;
+  position: relative;
+}
+
+
+.place-order-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.place-order-left .title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #0056b3;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.place-order-left .title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+
+.multi-fields {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.multi-fields input {
+  flex: 1;
+}
+
+.place-order input {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.05em;
+  color: #555;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.place-order input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+  background-color: #f9fcff;
+}
+
+.place-order input::placeholder {
+  color: #a0a0a0;
+}
+
+
+.least-button {
+  background-color: #28a745;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+
+.least-button:hover:not(:disabled) {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.least-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+.status-message {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05em;
+  animation: fadeInOut 5s forwards;
+  white-space: nowrap;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+
+.cart-total-modif {
+  flex: 1;
+  min-width: 300px;
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px dashed #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  min-height: 250px;
+}
+
+.button3 {
+  background-color: #f50cfd;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+.button3:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+
+@media (max-width: 768px) {
+  .place-order {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .multi-fields {
+    flex-direction: column;
+  }
+
+  .place-order input {
+    margin-bottom: 15px;
+  }
+
+  .place-order-left .title {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+
+  .status-message {
+    font-size: 0.9em;
+    padding: 10px 20px;
+    bottom: 10px;
+    left: 20px;
+    transform: none;
+    width: calc(100% - 40px);
+    text-align: center;
+  }
+
+  .least-button,
+  .button3 {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .place-order {
+    padding: 15px;
+  }
+
+  .place-order-left .title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .place-order input,
+  .least-button,
+  .button3 {
+    font-size: 0.95em;
+    padding: 10px 15px;
+  }
+
+  .status-message {
+    font-size: 0.8em;
+    padding: 8px 15px;
+  }
+}

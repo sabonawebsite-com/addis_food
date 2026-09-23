@@ -1,0 +1,52 @@
+.LiveStock-display{
+    margin-top: 30px;
+}
+.LiveStock-display h2{
+    font-size: max(2vw,24px);
+    font-weight: 600;
+}
+.LiveStock-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    row-gap: 50px;
+    margin-top: 30px;
+    gap: 30px;
+}
+.search-container {  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    margin-bottom: 20px;  
+  }  
+  
+  .search-input {  
+    background-color: rgb(218, 216, 216);
+    color: rgb(2, 2, 2);
+    width: 400px;  
+    padding: 10px;  
+    border: 2px solid #f00ba3;  
+    border-radius: 40px;  
+    font-size: 16px;  
+    outline: none;  
+    transition: border-color 0.3s;  
+  }  
+  
+  .search-input:focus {  
+    border-color: #007bff;  
+  }  
+  
+  .search-icon {  
+    width: 25px;  
+    height: 25px;  
+    margin-left: -35px; /* Positioning the icon */  
+    cursor: pointer;  
+  }
+  .propogand{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 26px;
+    color: rgb(243, 107, 10);
+    border: solid 2px rgb(181, 253, 202);
+  }

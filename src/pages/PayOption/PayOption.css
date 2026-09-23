@@ -1,0 +1,34 @@
+
+
+  
+  .main-banks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  span{
+   background-color: green;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .respo{
+    border: 1px solid rgb(187, 14, 221);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(2, 2, 2);
+  }
+  b{
+    background-color: rgb(2, 2, 2);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
