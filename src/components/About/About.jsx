@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import { devabout } from '../../devinfo/devinfo';
+
 const About = () => {
   return (
     <>
