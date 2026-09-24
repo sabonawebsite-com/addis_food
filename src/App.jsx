@@ -8,9 +8,6 @@ import LoginPopUp from './components/LoginPopUp/LoginPopUp'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Verify from './pages/Verify/Verify'
 import About from './components/About/About'
-import Contact from './components/Contact/Contact'
-import MainDistro from './pages/MainDistro/MainDistro'
-import ChapaPayment from './pages/ChapaPayment/ChapaPayment'
 import Myorder from './pages/Myorder/Myorder'
 import PayOption from './pages/PayOption/PayOption'
 const App = () => {
@@ -26,7 +23,7 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/verify' element={<Verify />} />
-          <Route path='/payment' element={<ChapaPayment />} />
+          
           <Route path='myorders' element={<Myorder />} />
           {/* <Route path='/distro' element={<MainDistro />} /> */}
           <Route path='/pay' element={<PayOption />} />

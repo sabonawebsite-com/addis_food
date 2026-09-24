@@ -1,9 +1,8 @@
 import React from 'react'
 import './PayOption.css'
 
-import {banks} from '../../banks/banks'
 import { assets } from '../../assets/assets'  
-import { distro } from '../../distro/distro'
+
 
 import { StoreContext } from '../../context/StoreContext'
 import { useContext } from 'react'

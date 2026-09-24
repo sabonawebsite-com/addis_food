@@ -3,6 +3,8 @@ import { assets } from '../../assets/assets';
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { useCartStore } from '../../store/useCartStore';
+import { useAuthStore } from '../../store/useAuthStore';
 import Searchle from '../Searchble/Searchle';
 import Comm_spo from '../Comm_spo/Comm_spo';
 import PopupAd from '../PopupAd/PopupAd';
@@ -15,7 +17,16 @@ const Navbar = ({ setShowlogin }) => {
   const [menu, setMenu] = useState("home");
   const [showAd, setShowAd] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+
+  // food_list still comes from StoreContext
+  const { food_list } = useContext(StoreContext);
+
+  // Cart and auth now come from Zustand
+  const getTotalCartAmount = useCartStore((state) => state.getTotalCartAmount);
+  const clearCart = useCartStore((state) => state.clearCart);
+  const token = useAuthStore((state) => state.token);
+  const logoutUser = useAuthStore((state) => state.logout);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,8 +53,8 @@ const Navbar = ({ setShowlogin }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
+    logoutUser();   // clears token and user from the auth store
+    clearCart();    // optional: remove this line if you want the cart kept after logout
     navigate("/");
   };
 
@@ -53,7 +64,7 @@ const Navbar = ({ setShowlogin }) => {
 
   const handleMenuClick = (menuName) => {
     setMenu(menuName);
-    setMobileMenuOpen(false); 
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -64,7 +75,7 @@ const Navbar = ({ setShowlogin }) => {
       <Link to='/'>
         <img title='logo' src={assets.stocklogo} alt="" className='logo' />
       </Link>
-  
+
       <div className="hamburger" onClick={handleHamburgerClick}>
         {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </div>
@@ -73,16 +84,15 @@ const Navbar = ({ setShowlogin }) => {
         <a title='product list ' href='#explore-menu' className={menu === "menu" ? "active" : ""} onClick={() => handleMenuClick("menu")}>Product-List</a>
         <a title='contact us ' href='#footer' className={menu === "contact-us" ? "active" : ""} onClick={() => handleMenuClick("contact-us")}>contact-us</a>
         <a title='for more information ' href='#contact' className={menu === "Add-info" ? "active" : ""} onClick={() => handleMenuClick("Add-info")}>Add-info</a>
-       
+
       </ul>
       {comm_spo && <Comm_spo />}
-      {useState && <userData />}
       <div className="navbar-right">
         {/* <img title='search product' onClick={toggleSearch} className='search-icon1' src={assets.search_icon} alt="" />
         {showSearch && <Searchle />} */}
         <div className="navbar-search-icon">
           <Link title='check your cart' to='/cart'><img src={assets.carticon} alt="" /></Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+          <div className={getTotalCartAmount(food_list) === 0 ? "" : "dot"}></div>
         </div>
         {!token ? (
           <button title='sign in to our web app' onClick={() => setShowlogin(true)} className='sigin-in'>sign in</button>

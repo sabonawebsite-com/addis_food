@@ -1,11 +1,32 @@
 import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
-import {Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useCartStore } from '../../store/useCartStore'
+import { useAuthStore } from '../../store/useAuthStore'
 
 const Cart = () => {
-  const { cartItem, removeFromcart, food_list, getTotalCartAmount } = useContext(StoreContext)
+  // food_list still comes from context for now (see note below)
+  const { food_list } = useContext(StoreContext)
+
+  // Zustand: select only what this component needs
+  const cartItem = useCartStore((state) => state.cartItem)
+  const removeFromcart = useCartStore((state) => state.removeFromcart)
+  const getTotalCartAmount = useCartStore((state) => state.getTotalCartAmount)
+  const token = useAuthStore((state) => state.token)
+
   const navigate = useNavigate()
+
+  const subtotal = getTotalCartAmount(food_list)
+  const fee = subtotal === 0 ? 0 : 2
+
+  const handleCheckout = () => {
+    if (!token) {
+      navigate('/login') // change to your login route
+      return
+    }
+    navigate('/myorders')
+  }
 
   return (
     <div className='cart'>
@@ -19,10 +40,10 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (cartItem[item._id] > 0) {
             return (
-              <div key={index}>
+              <div key={item._id}>
                 <div className="cart-items-title cart-items-item">
                   <img src={item.image} alt="" />
                   <p>{item.name}</p>
@@ -44,29 +65,22 @@ const Cart = () => {
           <div>
             <div className="cart-total-detail">
               <p>subtotal</p>
-              <p>Birr:{getTotalCartAmount()}</p>
+              <p>Birr:{subtotal}</p>
             </div>
             <hr />
             <div className="cart-total-detail">
               <p>Fee</p>
-              <p>Birr:{getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>Birr:{fee}</p>
             </div>
             <hr />
             <div className="cart-total-detail">
               <b>Total</b>
-              <b>Birr:{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+              <b>Birr:{subtotal + fee}</b>
             </div>
           </div>
 
           <div className='delevery-option'>
-            {/* <button
-              onClick={() => navigate("/myorders")}
-              className='button1'
-              disabled={getTotalCartAmount() === 0}
-            >
-              PROCEED TO CHECKOUT
-            </button> */}
-            <Link title='check your cart' to='/myorders'><button>Checkout</button></Link>
+            <button title='check your cart' onClick={handleCheckout}>Checkout</button>
           </div>
         </div>
 

@@ -1,22 +1,25 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './LiveStockItem.css'
 import { assets } from '../../assets/assets'
-import { StoreContext } from '../../context/StoreContext'
+import { useCartStore } from '../../store/useCartStore'
 
 const LiveStockItem = ({ id, name, price, description, image }) => {
 
-  const { cartItem, addToCart, removeFromcart } = useContext(StoreContext)
+  // Select only this item's quantity, so the card re-renders only when its own count changes
+  const quantity = useCartStore((state) => state.cartItem[id])
+  const addToCart = useCartStore((state) => state.addToCart)
+  const removeFromcart = useCartStore((state) => state.removeFromcart)
 
   return (
     <div className='live-stock-itme'>
       <div className="live-stock-item-contener">
         <img src={image} alt={name} className="live-stock-item-image" />
-        {!cartItem[id] ? (
+        {!quantity ? (
           <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt="add" />
         ) : (
           <div className='live-stock-item-counter'>
             <img onClick={() => removeFromcart(id)} src={assets.remove_icon_red} alt="remove" />
-            <p>{cartItem[id]}</p>
+            <p>{quantity}</p>
             <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt="add" />
           </div>
         )}
