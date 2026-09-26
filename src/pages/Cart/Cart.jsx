@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore'
 import { useAuthStore } from '../../store/useAuthStore'
 
@@ -80,7 +80,7 @@ const Cart = () => {
           </div>
 
           <div className='delevery-option'>
-            <button title='check your cart' onClick={handleCheckout}>Checkout</button>
+            <Link title='check your cart' to='/myorders'><button>Checkout</button></Link>
           </div>
         </div>
 

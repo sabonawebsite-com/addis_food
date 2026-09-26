@@ -161,22 +161,6 @@ body {
   }
 }
 
-.cart-total-modif {
-  flex: 1;
-  min-width: 300px;
-  background-color: #f8f9fa;
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px dashed #e0e0e0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #6c757d;
-  font-style: italic;
-  text-align: center;
-  min-height: 250px;
-}
-
 .button3 {
   background-color: #f50cfd;
   color: white;

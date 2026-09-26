@@ -83,13 +83,12 @@ const Navbar = ({ setShowlogin }) => {
         <Link title='home' to='/' className={menu === "home" ? "active" : ""} onClick={() => handleMenuClick("home")}>home</Link>
         <a title='product list ' href='#explore-menu' className={menu === "menu" ? "active" : ""} onClick={() => handleMenuClick("menu")}>Product-List</a>
         <a title='contact us ' href='#footer' className={menu === "contact-us" ? "active" : ""} onClick={() => handleMenuClick("contact-us")}>contact-us</a>
-        <a title='for more information ' href='#contact' className={menu === "Add-info" ? "active" : ""} onClick={() => handleMenuClick("Add-info")}>Add-info</a>
+        
 
       </ul>
       {comm_spo && <Comm_spo />}
       <div className="navbar-right">
-        {/* <img title='search product' onClick={toggleSearch} className='search-icon1' src={assets.search_icon} alt="" />
-        {showSearch && <Searchle />} */}
+
         <div className="navbar-search-icon">
           <Link title='check your cart' to='/cart'><img src={assets.carticon} alt="" /></Link>
           <div className={getTotalCartAmount(food_list) === 0 ? "" : "dot"}></div>

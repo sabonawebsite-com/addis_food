@@ -70,9 +70,6 @@ export const Myorder = () => {
           </p>
         )}
       </form> 
-      <button className='button3' onClick={() => navigate('/pay')}>
-       Pay
-      </button>
     </div>
   );  
 };  
