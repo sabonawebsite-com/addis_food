@@ -1,5 +1,5 @@
 
-.live-stock-item {
+.food-item {
   border: 2px solid green;
     display: grid;
     grid-template-columns: 3fr;
@@ -13,7 +13,7 @@
     min-height: 400px;
 } 
 
-.live-stock-item-contener {  
+.food-item-contener {  
  
   
     position: relative;  
@@ -21,7 +21,7 @@
 }  
 
 
-.live-stock-item-image {  
+.food-item-image {  
     width: 300px;  
     height: 200px; 
     border-radius: 8px; 
@@ -41,7 +41,7 @@
     transition: all 0.2s ease;
 } 
 
-.live-stock-item-counter {  
+.food-item-counter {  
     border: 2px solid #f00ca4;
     display: flex; 
     align-items: center;  
@@ -54,17 +54,17 @@
     left: 10px; 
 }  
 
-.live-stock-item-rating {  
+.food-item-rating {  
     display: flex;  
     align-items: center;  
     margin-bottom: 5px; 
 }  
 
-.live-stock-item-ifo {  
+.food-item-ifo {  
     padding: 15px;  
 }  
 
-.live-stock-item-description {  
+.food-item-description {  
     border: #34df7b 1px solid;
     padding: 10px;
     font-size: 16px; 
@@ -73,7 +73,7 @@
     border-radius: 20px;
 }  
 
-.live-stock-item-price {  
+.food-item-price {  
     font-size: 16px;   
     color: #ef05f7; 
     font-weight: bold; 
@@ -85,20 +85,20 @@
 
 
 @media (max-width: 600px) {  
-    .live-stock-itme {  
+    .food-itme {  
         margin: 10px; 
     }  
 
-    .live-stock-item-ifo {  
+    .food-item-ifo {  
         padding: 10px;  
     }  
 
-    .live-stock-item-image {  
+    .food-item-image {  
         height: 300px; 
         width: 400px;
     }  
 
-    .live-stock-item-counter {  
+    .food-item-counter {  
         width: 100%; 
     }  
 }  
